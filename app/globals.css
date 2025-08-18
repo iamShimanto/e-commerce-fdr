@@ -1,0 +1,21 @@
+@import "tailwindcss";
+ @plugin "daisyui" {
+   themes: light;
+ }
+
+
+ @utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@theme{
+    --color-brand : #3BB77E;
+    --color-primary : #253D4E;
+    --color-secondary : #7E7E7E;
+}
+
+.slick-dots .slick-active div{
+    @apply bg-primary w-10 ease-in-out duration-500
+}
+
