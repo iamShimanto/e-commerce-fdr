@@ -1,5 +1,4 @@
 import Category from "../../../components/category/Category";
-// import CategoryCard from "@/app/(main)/components/category/CategoryCard";
 import React from "react";
 import CategoryCard from "../../../components/category/CategoryCard";
 
@@ -12,7 +11,7 @@ const page = async ({ params }) => {
     method: "GET",
   });
   const data = await res.json();
-  console.log(data);
+
 
   return (
     <>

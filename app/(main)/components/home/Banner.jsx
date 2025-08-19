@@ -27,16 +27,16 @@ const Banner = () => {
             </div>
             <ul className="flex items-center gap-10">
               <li className="text-primary hover:text-brand hover:-translate-y-1 cursor-pointer duration-200 font-medium">
-                <Link href="/">Cake</Link>
+                <Link href="/shop/category/beauty">Beauty</Link>
               </li>
               <li className="text-primary hover:text-brand hover:-translate-y-1 cursor-pointer duration-200 font-medium">
-                <Link href="/">Coffes</Link>
+                <Link href="/shop/category/furniture">Furniture</Link>
               </li>
               <li className="text-primary hover:text-brand hover:-translate-y-1 cursor-pointer duration-200 font-medium">
-                <Link href="/">Pet Foods</Link>
+                <Link href="/shop/category/laptops">Laptops</Link>
               </li>
               <li className="text-primary hover:text-brand hover:-translate-y-1 cursor-pointer duration-200 font-medium">
-                <Link href="/">Vegetables</Link>
+                <Link href="/shop/category/mens-shirts">Mens Shirts</Link>
               </li>
             </ul>
           </div>

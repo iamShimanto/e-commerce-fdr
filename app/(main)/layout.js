@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import "../globals.css";
 import { cookies } from "next/headers";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Nest",
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }) {
       <body>
         <Navbar userData={userData} />
         {children}
+        <Footer/>
       </body>
     </html>
   );
