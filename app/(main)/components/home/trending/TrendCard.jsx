@@ -4,7 +4,7 @@ import React from "react";
 import { FaCartArrowDown } from "react-icons/fa";
 
 const TrendCard = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <Link href={`/shop/${data?.id}`}>

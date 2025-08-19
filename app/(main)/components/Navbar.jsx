@@ -5,7 +5,8 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FaBox, FaCartPlus, FaSearch } from "react-icons/fa";
 import { IoIosArrowDown, IoMdCall } from "react-icons/io";
 
-const Navbar = () => {
+const Navbar = ({ userData }) => {
+
   return (
     <>
       <div className="navbar bg-base-100 container">
@@ -45,7 +46,7 @@ const Navbar = () => {
                 About
               </Link>
               <Link
-                href="/"
+                href="/shop"
                 className="text-lg text-primary hover:text-brand ease-in-out duration-300 text-center py-1"
               >
                 Shop
@@ -92,13 +93,25 @@ const Navbar = () => {
             <FaCartPlus className="text-2xl" />
             Cart
           </Link>
-          <Link
-            href="/login"
-            className="flex items-center gap-1.5 text-xl text-primary cursor-pointer hover:text-brand duration-300"
-          >
-            <BsFillPersonFill className="text-2xl" />
-            LogIn
-          </Link>
+          {userData ? (
+            <Link
+              href="/profile"
+              className="flex flex-col justify-center items-center"
+            >
+              <div className="w-10 h-10 rounded-full flex justify-center items-center text-brand font-bold bg-white border">
+                {userData?.name[0]}
+              </div>
+              <p className="text-xl font-bold text-primary">{userData?.name}</p>
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              className="flex items-center gap-1.5 text-xl text-primary cursor-pointer hover:text-brand duration-300"
+            >
+              <BsFillPersonFill className="text-2xl" />
+              LogIn
+            </Link>
+          )}
         </div>
       </div>
       <nav className="bg-brand">
@@ -118,7 +131,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-primary/70 transition">
+              <Link href="/shop" className="hover:text-primary/70 transition">
                 Shop
               </Link>
             </li>
