@@ -1,5 +1,5 @@
 import React from "react";
-// import TrendCard from "./TrendCard";
+import TrendCard from "./TrendCard";
 
 async function trendData() {
   const res = await fetch("https://dummyjson.com/products?limit=20", {
