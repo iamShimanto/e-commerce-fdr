@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
@@ -9,10 +9,10 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
       const res = await fetch(
@@ -25,21 +25,21 @@ const Login = () => {
           },
         }
       );
-      const data = await res.json()
-      document.cookie = `accessToken=${data?.token}`
-      console.log(data)
+      const data = await res.json();
+      document.cookie = `accessToken=${data?.token}`;
       if (data.message === "Invalid credentials") {
-        return toast.error(data.message)
+        return toast.error(data.message);
       } else {
-        toast.success("Login Successfull")
+        toast.success("Login Successfull");
       }
       setTimeout(() => {
         router.push("/");
       }, 2000);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+ 
 
   return (
     <div className="flex justify-center items-center mt-20">

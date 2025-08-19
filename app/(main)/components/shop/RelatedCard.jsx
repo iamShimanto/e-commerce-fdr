@@ -1,11 +1,10 @@
-import { Box, Rating } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { FaCartArrowDown } from "react-icons/fa";
+import { Box, Rating } from '@mui/material';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react'
+import { FaCartArrowDown } from 'react-icons/fa';
 
-const TrendCard = ({ data }) => {
-  // console.log(data);
+const RelatedCard = ({data}) => {
   return (
     <>
       <Link href={`/shop/${data?.id}`}>
@@ -47,6 +46,6 @@ const TrendCard = ({ data }) => {
       </Link>
     </>
   );
-};
+}
 
-export default TrendCard;
+export default RelatedCard

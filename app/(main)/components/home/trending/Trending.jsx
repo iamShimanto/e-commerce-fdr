@@ -3,7 +3,7 @@ import TrendCard from "./TrendCard";
 
 async function trendData() {
   const res = await fetch("https://dummyjson.com/products?limit=20", {
-    next: { revalidate: 300 },
+    cache: "no-store",
   });
   return res.json();
 }

@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ShopItem from "../components/shop/ShopItem";
+import Category from "../components/category/Category";
 
 const Shop = () => {
   const [productData, setProductData] = useState({});
@@ -38,12 +39,12 @@ const Shop = () => {
       setSkip(parseInt(skip) + parseInt(limit));
     }
   };
-  console.log(skip);
 
   return (
     <>
       <div>
         <div className="container">
+          <Category />
           <div className="flex items-center justify-between rounded-md">
             <h3 className="text-xl font-medium text-primary/50 my-10">
               We found{" "}
