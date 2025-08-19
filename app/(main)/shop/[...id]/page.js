@@ -17,16 +17,13 @@ const page = async ({ params }) => {
 
   async function singleData() {
     const res = await fetch(`https://dummyjson.com/products/${id}`, {
-      cache: "no-store",
+      next: { revalidate: 300 },
     });
     return res.json();
   }
   const data = await singleData();
 
-
-
   const relateData = await relatedData();
-console.log(relateData);
   return (
     <>
       <div className="container mt-10">

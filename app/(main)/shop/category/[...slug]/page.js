@@ -1,7 +1,7 @@
-
-import Category from "@/app/(main)/components/category/Category";
-import CategoryCard from "@/app/(main)/components/category/CategoryCard";
+import Category from "../../../components/category/Category";
+// import CategoryCard from "@/app/(main)/components/category/CategoryCard";
 import React from "react";
+import CategoryCard from "../../../components/category/CategoryCard";
 
 const page = async ({ params }) => {
   const param = await params.slug;
@@ -16,14 +16,14 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div>
+      <div className="mb-15">
         <Category />
         <h2 className=" capitalize text-3xl font-medium text-brand text-center my-5">
           {slug.split("-").join(" ")}
         </h2>
-        <div>
+        <div className="grid grid-cols-5 gap-6 drop-shadow-slate-300 drop-shadow-2xl">
           {data?.products.map((item) => (
-            <CategoryCard key={item.id} />
+            <CategoryCard key={item.id} data={item} />
           ))}
         </div>
       </div>
