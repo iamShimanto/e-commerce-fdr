@@ -15,7 +15,7 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="mb-15">
+      <div className="mb-15 container">
         <Category />
         <h2 className=" capitalize text-3xl font-medium text-brand text-center my-5">
           {slug.split("-").join(" ")}

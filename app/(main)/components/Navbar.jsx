@@ -87,7 +87,7 @@ const Navbar = ({ userData }) => {
         </div>
         <div className="navbar-end flex gap-8">
           <Link
-            href="/"
+            href="/cart"
             className="flex items-center gap-1.5 text-xl text-primary cursor-pointer hover:text-brand duration-300"
           >
             <FaCartPlus className="text-2xl" />
