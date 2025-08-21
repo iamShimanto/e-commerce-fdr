@@ -1,88 +1,65 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import ShopItem from "../components/shop/ShopItem";
-import Category from "../components/category/Category";
+import LimitSelector from "../components/shop/LimitSelector";
 
-const Shop = () => {
-  const [productData, setProductData] = useState({});
-  const [limit, setLimit] = useState(20);
-  const [skip, setSkip] = useState(0);
+export default async function Shop({ searchParams }) {
+  const limit = parseInt(searchParams?.limit ?? "20", 10) || 20;
+  const skip = parseInt(searchParams?.skip ?? "0", 10) || 0;
 
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(
-        `https://dummyjson.com/products?limit=${limit}&skip=${skip}`,
-        {
-          method: "GET",
-        }
-      );
-
-      const data = await res.json();
-      setProductData(data);
-    })();
-  }, [limit, skip]);
-
-  const handleLimit = (e) => {
-    const value = e.target.value;
-    setLimit(value);
-  };
-
-  const prevSkip = () => {
-    if (skip - limit >= 0) {
-      setSkip(skip - limit);
-    } else {
-      setSkip(0);
+  const res = await fetch(
+    `https://dummyjson.com/products?limit=${limit}&skip=${skip}`,
+    {
+      method: "GET",
+      cache: "no-store",
     }
-  };
-  const nextSkip = () => {
-    if (skip < productData?.total - limit) {
-      setSkip(parseInt(skip) + parseInt(limit));
-    }
-  };
+  );
+  const productData = await res.json();
+
+  const total = productData?.total ?? 0;
+  const products = productData?.products ?? [];
+
+  const prevSkip = Math.max(0, skip - limit);
+  const nextSkip = skip < total - limit ? skip + limit : skip;
+
+  const q = (l, s) => `?limit=${l}&skip=${s}`;
 
   return (
     <>
       <div>
         <div className="container">
-          <Category />
           <div className="flex items-center justify-between rounded-md">
             <h3 className="text-xl font-medium text-primary/50 my-10">
-              We found{" "}
-              <span className="font-bold text-brand">{productData?.total}</span>{" "}
+              We found <span className="font-bold text-brand">{total}</span>{" "}
               items for you!
             </h3>
-            <select
-              onChange={handleLimit}
-              className="px-3 py-2 bg-brand rounded-md hover:bg-brand/80 duration-200"
-            >
-              <option value="20">20</option>
-              <option value="40">40</option>
-              <option value="60">60</option>
-            </select>
+
+            <LimitSelector limit={limit} skip={skip} />
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
-            {productData?.products?.map((item) => (
+            {products.map((item) => (
               <ShopItem key={item.id} data={item} />
             ))}
           </div>
+
           <div className="flex justify-center items-center gap-10 my-10">
-            <button
-              onClick={prevSkip}
-              className="text-white bg-brand hover:bg-brand/60 hover:text-black duration-200 px-4 py-2 rounded-md cursor-pointer font-medium"
+            <Link
+              href={q(limit, prevSkip)}
+              scroll={false}
+              className="text-white bg-brand hover:bg-brand/60 hover:text-black duration-200 px-4 py-2 rounded-md font-medium"
             >
               Prev
-            </button>
-            <button
-              onClick={nextSkip}
-              className="text-white bg-brand hover:bg-brand/60 hover:text-black duration-200 px-4 py-2 rounded-md cursor-pointer font-medium"
+            </Link>
+            <Link
+              href={q(limit, nextSkip)}
+              scroll={false}
+              className="text-white bg-brand hover:bg-brand/60 hover:text-black duration-200 px-4 py-2 rounded-md font-medium"
             >
               Next
-            </button>
+            </Link>
           </div>
         </div>
       </div>
     </>
   );
-};
-
-export default Shop;
+}
