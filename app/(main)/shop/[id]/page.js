@@ -13,7 +13,8 @@ import RelatedCard from "../../components/shop/RelatedCard";
   }
 
 const page = async ({ params }) => {
-  const id = await params.id[0];
+  const {id} = await params
+
 
   async function singleData() {
     const res = await fetch(`https://dummyjson.com/products/${id}`, {
@@ -30,7 +31,7 @@ const page = async ({ params }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="border border-primary/40 rounded-2xl">
             <Image
-              src={data?.images[0]}
+              src={data?.images[0] || "images/1.webp"}
               width={300}
               height={300}
               layout="responsive"
@@ -42,27 +43,27 @@ const page = async ({ params }) => {
               {data?.availabilityStatus}
             </p>
             <h2 className="text-4xl font-bold italic tracking-wider max-w-150 py-10">
-              {data?.title}
+              {data?.title || ""}
             </h2>
             <div className="flex gap-1">
               <Box>
                 <Rating
                   className="text-sm"
                   name="simple-controlled"
-                  value={data?.rating}
+                  value={data?.rating || 5}
                 />
               </Box>
               <p className="text-secondary text-lg">
-                ({data?.reviews.length} reviews)
+                ({data?.reviews.length || 0} reviews)
               </p>
             </div>
             <h2 className="text-5xl font-black flex gap-3 items-center text-brand my-7">
               ${data?.price}{" "}
               <sub className="text-3xl text-secondary line-through">
-                ${(data?.discountPercentage + data?.price).toFixed(2)}
+                ${(data?.discountPercentage + data?.price || 0).toFixed(2)}
               </sub>{" "}
             </h2>
-            <p className="text-secondary max-w-150 mb-5">{data?.description}</p>
+            <p className="text-secondary max-w-150 mb-5">{data?.description || ""}</p>
             <ShopCartBtn data={data} />
             <div>
               <div className="flex gap-2 text-secondary font-medium mt-5">
@@ -75,7 +76,7 @@ const page = async ({ params }) => {
               </div>
               <p className="my-5 text-secondary font-medium">
                 Stock:{" "}
-                <span className="text-brand">{data?.stock} Items in Stock</span>
+                <span className="text-brand">{data?.stock || 0} Items in Stock</span>
               </p>
             </div>
           </div>
@@ -121,9 +122,12 @@ const page = async ({ params }) => {
             Related products
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {relateData.products.map((item) => (
+            {
+              relateData?.products.length > 0 &&
+              relateData.products.map((item) => (
               <RelatedCard key={item.id} data={item} />
-            ))}
+            ))
+            }
           </div>
         </div>
       </div>
