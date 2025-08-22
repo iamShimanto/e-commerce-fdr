@@ -6,7 +6,7 @@ const ShopCartBtn = ({ data }) => {
   const [value, setValue] = useState(1);
 
   const handleInc = () => {
-    if (value < data?.stock) {
+    if (value < 10 & value < data?.stock) {
       setValue(value + 1);
     }
   };
@@ -21,7 +21,7 @@ const ShopCartBtn = ({ data }) => {
     <div className="flex items-center gap-2">
       <div className="border-2 border-brand w-25 px-2 py-1 rounded-lg">
         <div className="flex items-center justify-between h-10">
-          <p className="pl-4 text-lg font-bold">{value}</p>
+          <p className="pl-4 text-lg font-bold">{data?.stock === 0 ? 0 : value}</p>
           <div className="flex flex-col">
             <button
               onClick={handleInc}
