@@ -16,7 +16,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://fdr-food-api.onrender.com/api/auth/register",
+        "https://fdr-food-api.vercel.app/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify(user),

@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       const res = await fetch(
-        "https://fdr-food-api.onrender.com/api/auth/login",
+        "https://fdr-food-api.vercel.app/api/auth/login",
         {
           method: "POST",
           body: JSON.stringify(user),
@@ -39,7 +39,7 @@ const Login = () => {
       console.log(error);
     }
   };
- 
+
 
   return (
     <div className="flex justify-center items-center mt-20">
