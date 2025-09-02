@@ -116,9 +116,9 @@ const Navbar = ({ userData }) => {
       </div>
       <nav className="bg-brand">
         <div className="container hidden lg:flex items-center justify-between py-2">
-          <p className="px-5 py-3.5 bg-brand w-fit rounded-md font-semibold text-white cursor-pointer flex items-center gap-2">
+          <Link href="/shop/category" className="px-5 py-3.5 bg-brand w-fit rounded-md font-semibold text-white cursor-pointer flex items-center gap-2">
             <FaBox /> Browse All Categories <IoIosArrowDown />
-          </p>
+          </Link>
           <ul className="flex gap-3 xl:gap-6 font-bold text-primary text-base xl:text-lg">
             <li>
               <Link href="/" className="hover:text-primary/70 transition">

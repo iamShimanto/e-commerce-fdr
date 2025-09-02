@@ -14,7 +14,6 @@ const Footer = () => {
             <Image
               width={500}
               height={400}
-              layout="responsive"
               src="/images/logo.png"
               alt="logo"
             />
@@ -160,10 +159,10 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               <Link href="/">
-                <img src="images/app-store.png" alt="app-store" />
+                <img src="/images/app-store.png" alt="app-store" />
               </Link>
               <Link href="/">
-                <img src="images/app-store.png" alt="app-store" />
+                <img src="/images/app-store.png" alt="app-store" />
               </Link>
             </div>
             <p className="font-normal text-base text-primary my-5">
