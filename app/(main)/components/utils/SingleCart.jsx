@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const SingleCart = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div className="max-w-4xl mx-auto">
       <div className="flex items-center justify-between bg-white shadow-md rounded-xl p-4 mb-4">

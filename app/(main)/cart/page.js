@@ -5,6 +5,7 @@ import SingleCart from "../components/utils/SingleCart";
 const Cart = async () => {
   const res = await fetch("https://dummyjson.com/carts/2", {
     method: "GET",
+    cache: "no-store",
   });
   const data = await res.json();
   // console.log(data);

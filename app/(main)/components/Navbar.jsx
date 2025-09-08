@@ -5,7 +5,13 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FaBox, FaCartPlus, FaSearch } from "react-icons/fa";
 import { IoIosArrowDown, IoMdCall } from "react-icons/io";
 
-const Navbar = ({ userData }) => {
+const Navbar = async ({ userData }) => {
+
+   const res = await fetch("https://dummyjson.com/carts/2", {
+    method: "GET",
+    cache: "no-store",
+  });
+  const data = await res.json();
 
   return (
     <>
@@ -88,10 +94,11 @@ const Navbar = ({ userData }) => {
         <div className="navbar-end flex gap-8">
           <Link
             href="/cart"
-            className="flex items-center gap-1.5 text-xl text-primary cursor-pointer hover:text-brand duration-300"
+            className="flex items-center gap-1.5 text-xl text-primary cursor-pointer hover:text-brand duration-300 relative"
           >
             <FaCartPlus className="text-2xl" />
             Cart
+            <span className="size-7 rounded-full flex items-center justify-center text-white text-sm bg-brand absolute -top-4 right-6">{data?.totalProducts}</span>
           </Link>
           {userData ? (
             <Link
@@ -116,7 +123,10 @@ const Navbar = ({ userData }) => {
       </div>
       <nav className="bg-brand">
         <div className="container hidden lg:flex items-center justify-between py-2">
-          <Link href="/shop/category" className="px-5 py-3.5 bg-brand w-fit rounded-md font-semibold text-white cursor-pointer flex items-center gap-2">
+          <Link
+            href="/shop/category"
+            className="px-5 py-3.5 bg-brand w-fit rounded-md font-semibold text-white cursor-pointer flex items-center gap-2"
+          >
             <FaBox /> Browse All Categories <IoIosArrowDown />
           </Link>
           <ul className="flex gap-3 xl:gap-6 font-bold text-primary text-base xl:text-lg">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShopItem from "../components/shop/ShopItem";
 import LimitSelector from "../components/shop/LimitSelector";
+import Subscribe from "../components/home/Subscribe";
 
 export default async function Shop({ searchParams }) {
   const limit = parseInt(searchParams?.limit ?? "20", 10) || 20;
@@ -57,6 +58,7 @@ export default async function Shop({ searchParams }) {
               Next
             </Link>
           </div>
+          <Subscribe />
         </div>
       </div>
     </>
