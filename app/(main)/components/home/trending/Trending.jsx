@@ -19,7 +19,7 @@ const Trending = async () => {
           <h2 className="text-4xl font-bold text-primary tracking-wide text-center mb-15">
             Trending items
           </h2>
-          <div className="grid grid-cols-5 gap-6 drop-shadow-slate-300 drop-shadow-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 drop-shadow-slate-300 drop-shadow-2xl">
             {data?.products.map((item) => (
               <TrendCard key={item.id} data={item} />
             ))}

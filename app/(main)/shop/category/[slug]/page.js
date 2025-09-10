@@ -6,7 +6,6 @@ const page = async ({ params }) => {
   const param = await params;
   const slug = param.slug;
 
-
   const res = await fetch(`https://dummyjson.com/products/category/${slug}`, {
     method: "GET",
     cache: "no-store",
@@ -20,7 +19,7 @@ const page = async ({ params }) => {
         <h2 className=" capitalize text-3xl font-medium text-brand text-center my-5">
           {slug?.split("-").join(" ")}
         </h2>
-        <div className="grid grid-cols-5 gap-6 drop-shadow-slate-300 drop-shadow-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 drop-shadow-slate-300 drop-shadow-2xl">
           {data?.products.map((item) => (
             <CategoryCard key={item.id} data={item} />
           ))}
